@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Meetup Check-in</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">MEETUP</div>
+    <nav>
+      <a href="#checkin">Check-in</a>
+      <a href="#participant">My Group</a>
+      <a href="#admin">Admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="checkin" class="view active">
+      <div class="hero">
+        <span class="eyebrow">STAFF CHECK-IN</span>
+        <h1>Scan. Confirm. Done.</h1>
+        <p>Scan a participant QR code to check them in.</p>
+      </div>
+
+      <div class="card scanner-card">
+        <div id="reader"></div>
+        <button id="startScanner" class="primary">Start camera</button>
+        <button id="stopScanner" class="secondary hidden">Stop camera</button>
+
+        <div class="manual">
+          <label for="manualToken">Manual registration ID</label>
+          <div class="row">
+            <input id="manualToken" placeholder="e.g. MEET-7F82A91C" autocomplete="off">
+            <button id="manualCheckin" class="primary">Check in</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="checkinResult" class="result hidden"></div>
+    </section>
+
+    <section id="participant" class="view">
+      <div class="hero">
+        <span class="eyebrow">PARTICIPANT</span>
+        <h1>Find your team.</h1>
+        <p>Open this page using your QR link or enter your registration ID.</p>
+      </div>
+
+      <div class="card">
+        <label for="participantToken">Registration ID</label>
+        <div class="row">
+          <input id="participantToken" placeholder="MEET-7F82A91C" autocomplete="off">
+          <button id="lookupParticipant" class="primary">Show group</button>
+        </div>
+      </div>
+
+      <div id="participantResult" class="result hidden"></div>
+    </section>
+
+    <section id="admin" class="view">
+      <div class="hero">
+        <span class="eyebrow">ORGANIZER</span>
+        <h1>Manage participants.</h1>
+        <p>Groups stay in your Google Sheet. Change them here when needed.</p>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <input id="adminPin" type="password" placeholder="Admin PIN">
+          <button id="adminLoad" class="primary">Open admin</button>
+        </div>
+        <p class="muted">The PIN is checked by Apps Script, not by this page.</p>
+      </div>
+
+      <div id="adminPanel" class="hidden">
+        <div class="toolbar card">
+          <input id="adminSearch" placeholder="Search name or registration ID">
+          <button id="randomize" class="secondary">Randomize 5 groups</button>
+          <button id="saveAll" class="primary">Save changes</button>
+        </div>
+
+        <div class="card table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Registration ID</th>
+                <th>Group</th>
+                <th>Checked in</th>
+              </tr>
+            </thead>
+            <tbody id="adminTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
