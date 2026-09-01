@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyBMRbWg10UCrhxDcfKtsDhvpicICuR-iMXVRThqyFzjGf245qv36O9HeWj9Jg1bqUw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby0t9EWHPn17V-KK3mwfzfguMBVlIOMkvvNETn3TIjhtLEwecJpczreboqe64MdzPBf/exec";
 
 const GROUPS = [
   {id:1, name:"Titans", icon:"🛡️"},
